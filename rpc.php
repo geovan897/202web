@@ -13,9 +13,9 @@ switch($request)
 	$response = $login->validateClient($username,$password);
 	if ($response['success']===true)
 	{	
-		session_start();
-		$_SESSION['username'];
-		header('Location:welcome.php');
+	     header('Location:welcome.php');
+	     session_start();
+	     $_SESSION['username'] = $username;
 	}
 	else
 	{
@@ -37,10 +37,6 @@ switch($request)
 	}
 	break;
     
-}
-
-if (isset($_GET['username'])){
-    session_unregister('username');
 }
 
 
