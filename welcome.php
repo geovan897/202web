@@ -7,6 +7,8 @@ echo 'Welcome '.$_SESSION['username']; // this is the original portion before ch
 
 $user = $_SESSION['username'];
 
+echo '<a href ="logout.php" target ="_blank"/><b> Logout</b></a>';
+
 
 ?>
 
