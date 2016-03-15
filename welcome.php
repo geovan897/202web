@@ -1,9 +1,19 @@
 <?php
-session_start();
-echo 'Welcome '.$_SESSION['username'];
 
-echo '<br><a href="logout.php?action=logout">Logout</a>';
 
+session_start(); // original portion before changes 
+
+echo 'Welcome '.$_SESSION['username']; // this is the original portion before changes
+
+$user = $_SESSION['username'];
 
 
 ?>
+
+
+
+
+
+
+
+
