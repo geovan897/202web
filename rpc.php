@@ -4,6 +4,7 @@ require_once("clientDB.php.inc");
 
 $request = $_POST['request'];
 $response = "FUCK<p>";
+$adder = "";
 switch($request)
 {
     case "login":
@@ -27,9 +28,13 @@ switch($request)
 	$password = $_POST['password'];
 	$login = new clientDB("connect.ini");
 	$response = $login->addNewClient($username,$password);
+	
 	if ($response['success']===true)
 	{
 		$response = "Congrats You're Registered!<p>";
+		?> <p align="center"><a href ="index.html" target ="_blank"/><b> Login Here</b></a> </p>
+		<?php
+	
 	}
 	else
 	{

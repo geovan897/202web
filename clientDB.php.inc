@@ -90,6 +90,8 @@ class clientDB
 	$password = $this->saltPassword($password);
         $addQuery = "insert into clients (clientName,clientPW, firstLogin, lastLogin) values ('$name','$password','$now','$now');";
         $results = $this->db->query($addQuery);
+        $quer1 = "insert into userprofiles (clientName) values ('$name');";
+	$resultado = $this->db->query($quer1);
 	if (!$results)
 	{
 	    $this->logger->log("error: ".$this->db->error);
