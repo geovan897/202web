@@ -27,7 +27,34 @@ class clientDB
     {
 	$this->db->close();
     }
-
+    /// trying to see if this will work
+     public function teams(){
+      $query = "select * from teams;";
+      $results = $this->db->query($query);
+      
+    while ($row = mysqli_fetch_assoc($results)){
+    echo
+	   "
+	   <table border ='1' align='center' width='10' >
+           <thead>
+           <tr>
+	      <th>TeamName</th>
+	      <th>Country</th>
+	      <th>TopScorer</th>
+	      <th>NumberofTitles</th>
+	   </tr>
+           </thead>
+           <tbody>
+	    <tr>
+	    <td width='10%'>".$row['TeamName']."</td>
+	    <td width='10%'>".$row['Country']."</td>
+	    <td width='10%'>".$row['TopScorer']."</td>
+	    <td width='10%'>".$row['NumberofTitles']."</td>
+            </tr>
+            </table>";
+    }
+    }
+    /// trying to see if this will work
     public function getClientId($name)
     {
 	$query = "select clientId from clients where clientName = '$name';";
