@@ -28,33 +28,51 @@ class clientDB
 	$this->db->close();
     }
     /// trying to see if this will work
-     public function teams(){
-      $query = "select * from teams;";
+    public function teams(){
+      $query = "select * from teams order by NumberofTitles DESC;";
       $results = $this->db->query($query);
+      echo " <table border ='1'align='right' bgcolor='red' >
+      <caption>Champtions League Info</caption>
+      <tr>
+      <th>TeamName</th>
+      <th>Country</th>
+      <th>TopScorer</th>
+      <th>NumberofTitles</th>
+      </tr>";
+      while ($row = mysqli_fetch_assoc($results)){
       
-    while ($row = mysqli_fetch_assoc($results)){
-    echo
-	   "
-	   <table border ='1' align='center' width='10' >
-           <thead>
-           <tr>
-	      <th>TeamName</th>
-	      <th>Country</th>
-	      <th>TopScorer</th>
-	      <th>NumberofTitles</th>
-	   </tr>
-           </thead>
-           <tbody>
-	    <tr>
-	    <td width='10%'>".$row['TeamName']."</td>
-	    <td width='10%'>".$row['Country']."</td>
-	    <td width='10%'>".$row['TopScorer']."</td>
-	    <td width='10%'>".$row['NumberofTitles']."</td>
-            </tr>
-            </table>";
+      echo "<tr>";
+      echo "<td>".$row['TeamName']."</td>";
+      echo "<td>".$row['Country']."</td>";
+      echo "<td>".$row['TopScorer']."</td>";
+      echo "<td>".$row['NumberofTitles']."</td>";
+      echo "</tr>";
     }
+    echo "</table>";
     }
-    /// trying to see if this will work
+    /// function works
+    public function leagues(){
+      $query = "select * from LeagueInfo order by LeagueRating DESC;";
+      $results = $this->db->query($query);
+      echo " <table border ='1'align='left bottom' bgcolor='gray' '>
+      <caption>LeagueRatings</caption>
+      <tr>
+      <th>League</th>
+      <th>LeagueRating</th>
+      <th>Country</th>
+      <th>TopTeam</th>
+      </tr>";
+      while ($row = mysqli_fetch_assoc($results)){
+      
+      echo "<tr>";
+      echo "<td>".$row['League']."</td>";
+      echo "<td>".$row['LeagueRating']."</td>";
+      echo "<td>".$row['Country']."</td>";
+      echo "<td>".$row['TopTeam']."</td>";
+      echo "</tr>";
+    }
+    echo "</table>";
+    }
     public function getClientId($name)
     {
 	$query = "select clientId from clients where clientName = '$name';";
