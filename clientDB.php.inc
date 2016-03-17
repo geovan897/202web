@@ -159,15 +159,18 @@ class clientDB
       if (!$result){
 	 return "error";
       }
+      /*
       if ($result->num_rows > 0){
 	return "Failed -  Exists";
       }else{
+      */
 	$query1 = "Update userprofiles set team1 = '$team' where clientName = '$username'";
 	$res = $this->db->query($query1);
       if (!$res){
 	  return "error";
       }
-	return "Successfully Added";
+      if ($res){
+	return "We have added your team successfully";
       }
      
       

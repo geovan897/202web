@@ -4,10 +4,10 @@ session_start(); //oirginal portion before changes
 //echo ' Welcome '.$_SESSION['username']; // this is the original portion before changes </p>";
 //$user = $_SESSION['username'];
 
-if ( isset( $_POST['team'] ) &&  isset($_SESSION['username'])){
+if ( isset( $_POST['team1'] ) &&  isset($_SESSION['username'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
-  $response = $login->addteam($_POST['team'],$_SESSION['username']);
+  $response = $login->addteam($_POST['team1'],$_SESSION['username']);
   //$response = $login->teams(); this portion and the
    
    
@@ -29,8 +29,10 @@ if ( isset( $_SESSION['username'] ) ){
  <html>
  <body>
  
+ 
+ 
  <form action="" method="post">
-  <select name='team' >
+  <select name='team1' >
   <option value = "Real Madrid"> Real Madrid Fc </option>
   <option value = "Barcelona"> Barcelona Fc </option>
   <option value = "Bayern Munich"> Bayern Munich Fc </option>
@@ -47,9 +49,10 @@ if ( isset( $_SESSION['username'] ) ){
   <option value = "Manchester United"> Manchester United </option>
   <option value = "Napoli"> Napoli </option>
   </select>
-  
-  
   <input type="submit"  value ="submit" name="submit"/>
+  
+  
+  
 <?php  
 
 //$teams = array ('Real Madrid','Barcelona','Bayern Munich','Shalke 04','Borussia Dortmund','Juventus','Milan', 'AS Monaco','Arsenal','Atletico Madrid',
