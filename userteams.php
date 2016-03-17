@@ -8,60 +8,67 @@ if ( isset( $_POST['team1'] ) &&  isset($_SESSION['username'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
   $response = $login->addteam($_POST['team1'],$_SESSION['username']);
-  //$response = $login->teams(); this portion and the
-   
-   
- 
 }
+///-------------------------------------------------------------///
+if ( isset( $_POST['league'] ) &&  isset($_SESSION['username'])){
+   require_once('clientDB.php.inc');
+   $login = new clientDB ("connect.ini");
+  $response2 = $login->addLeague($_POST['league'],$_SESSION['username']);
+}
+//----------------------------------------------------------------////
 
 if ( isset( $_SESSION['username'] ) ){
   $x =  "<p class='welcome'>Welcome, <a class='removealine' href='logout.php' title=''>".$_SESSION['username']."</a></p>";
   
   require_once('clientDB.php.inc');
   $login = new clientDB("connect.ini");
- // $result = $login->addteam($_SESSION['username']);
-  //$response = $login->teams(); this portion and the code below works fine but we need to make a nav bar for the list of teams in a league
- //$response2 = $login->leagues();
-
- }
+}
  
  ?>
  <html>
+ 
+<h1> Add your Favorite Team and League here </h1>
  <body>
  
  
  
  <form action="" method="post">
   <select name='team1' >
-  <option value = "Real Madrid"> Real Madrid Fc </option>
-  <option value = "Barcelona"> Barcelona Fc </option>
-  <option value = "Bayern Munich"> Bayern Munich Fc </option>
-  <option value = "Shalke 04"> Shalke 04 </option>
+  <option value = "Ajax">Ajax Fc</option>
+  <option value = "Aston Villa">Aston Villa Fc</option>
+  <option value = "Barcelona"> Barcelona </option>
+  <option value = "Bayern Munich">Bayern Munich</option>
+  <option value = "Benfica">Benfica</option>
   <option value = "Borussia Dortmund">Borussia Dortmund</option>
-  <option value = "Juventus"> Juventus </option>
-  <option value = "Milan"> Milan </option>
-  <option value = "AS Monaco"> Monaco </option>
-  <option value = "Arsenal"> Arsenal </option>
-  <option value = "Atletico Madrid"> Atletico Madrid </option>
-  <option value = "Chelsea"> Chelsea Fc </option>
-  <option value = "Paris Saint-Germain"> PSG </option>
-  <option value = "Manchester City"> Manchester City </option>
-  <option value = "Manchester United"> Manchester United </option>
-  <option value = "Napoli"> Napoli </option>
+  <option value = "Chelsea">Chelsea</option>
+  <option value = "Internazionale">Internazionale</option>
+  <option value = "Juventus">Juventus</option>
+  <option value = "Liverpool">Liverpool</option>
+  <option value = "Manchester United">Manchester United</option>
+  <option value = "Marseille">Marseille</option>
+  <option value = "Milan">Milan</option>
+  <option value = "Porto">Manchester United</option>
+  <option value = "Real Madrid">Real Madrid</option>
+  </select>
+  <input type="submit"  value ="submit" name="submit"/>
+  
+  <select name='league' >
+  <option value = "La Liga">La Liga</option>
+  <option value = "Bundesliga">Bundesliga</option>
+  <option value = "Premier League">Barclays Premier League</option>
+  <option value = "Serie A">Calcio Serie A</option>
+  <option value = "Ligue 1">France Ligue 1</option>
+  <option value = "Primeira Liga">Borussia Dortmund</option>
+  <option value = "Eredevisie">Netherlands Eredevisie</option>
+  
   </select>
   <input type="submit"  value ="submit" name="submit"/>
   
   
-  
-<?php  
 
-//$teams = array ('Real Madrid','Barcelona','Bayern Munich','Shalke 04','Borussia Dortmund','Juventus','Milan', 'AS Monaco','Arsenal','Atletico Madrid',
-//'Chelsea','Paris Saint-Germain','Manchester City','Manchester United','Napoli');
-														
-
-?>
 </form>    
 
 <h2> <?php echo $response; ?> </h2>
+<h3> <?php echo $response2; ?> </h3>
 </body>
 </html>

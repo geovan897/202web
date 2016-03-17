@@ -12,12 +12,10 @@ drop table if exists userprofiles;
 create table userprofiles
 (
   clientName varchar(25)not null primary key,
-  team1 varchar(25),
-  team2 varchar(25),
-  team3 varchar(25)
+  team varchar(25),
+  league varchar(25)
  
-	
-);
+ );
 
 drop table if exists LeagueInfo;
 create table LeagueInfo

@@ -143,9 +143,9 @@ class clientDB
 	}
 	return array("success"=>true);
     }
-    public function addTeam($team,$username)
+    public function addTeam($team1,$username)
     {
-      $query = "select * from userprofiles where team1 = '$team' and clientName ='$username'";
+      $query = "select * from userprofiles where team = '$team1' and clientName ='$username'";
       
       $result = $this->db->query($query);
       //$search2 = "select * from $user where team2 = $team";
@@ -164,7 +164,7 @@ class clientDB
 	return "Failed -  Exists";
       }else{
       */
-	$query1 = "Update userprofiles set team1 = '$team' where clientName = '$username'";
+	$query1 = "Update userprofiles set team = '$team1' where clientName = '$username'";
 	$res = $this->db->query($query1);
       if (!$res){
 	  return "error";
@@ -175,6 +175,33 @@ class clientDB
      
       
     } 
+    // addTeam is successful now the bottom function will be to add a league
+   public function addLeague($League1,$username)
+    {
+      $query = "select * from userprofiles where  league= '$League1' and clientName ='$username'";
+      
+      $result = $this->db->query($query);
+      
+      if (!$result){
+	 return "error";
+      }
+      /*
+      if ($result->num_rows > 0){
+	return "Failed -  Exists";
+      }else{
+      */
+	$query1 = "Update userprofiles set league = '$League1' where clientName = '$username'";
+	$details = $this->db->query($query1);
+      if (!$details){
+	  return "error";
+      }
+      if ($details){
+	return "We have added your League successfully";
+      }
+     
+      
+    } 
+  
   
 }
 // at this point db is connected
