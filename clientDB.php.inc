@@ -143,7 +143,36 @@ class clientDB
 	}
 	return array("success"=>true);
     }
+    public function addTeam($team,$username)
+    {
+      $query = "select * from userprofiles where team1 = '$team' and clientName ='$username'";
+      
+      $result = $this->db->query($query);
+      //$search2 = "select * from $user where team2 = $team";
+      //$search3= "select * from $user where team3 = $team";
+     
+      //$results = $this->db->query($query);
+      
 
+      //$results2 = $this->db->query($search2);
+      //$results3 = $this->db->query($search3);
+      if (!$result){
+	 return "error";
+      }
+      if ($result->num_rows > 0){
+	return "Failed -  Exists";
+      }else{
+	$query1 = "Update userprofiles set team1 = '$team' where clientName = '$username'";
+	$res = $this->db->query($query1);
+      if (!$res){
+	  return "error";
+      }
+	return "Successfully Added";
+      }
+     
+      
+    } 
+  
 }
 // at this point db is connected
 ?>
