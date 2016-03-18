@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 <style>
+ul {
+    list-style-type: none;
+    bottom:200px;
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
 body {
     postion: absolute;
     backgound-image: url("/home/geovanny/202web/Champions.png");
@@ -16,9 +38,15 @@ body {
 <p>username: <input type="text" name="username" /></p>
 <p>password: <input type ="password" name="password" /></p>
 <input type="submit" name="request" value="login"/>
+
 </form>
 
-<p align="center"><a href="register.html" target="_blank"/><b> If you're not a member already Register </b></a> 
+<ul>
+  <li><a href="forgot.html">Forgot my password</a></li>
+  <li><a href="register.html">Sign up</a></li>
+</ul>
+
+
 </body>
 </html>
 

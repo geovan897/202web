@@ -94,7 +94,16 @@ class clientDB
     {
 	return $this->db->real_escape_string(sha1($password.$this->salt));
     }
-
+    /// Inserting a function to salt the secret question
+    
+    
+    private function saltSecret($secret)
+    {
+	return $this->db->real_escape_string(sha1($secret.$this->salt));
+    
+    }
+   
+    /// Top function is prototype
     public function validateClient($name,$password)
     {
 	if ($this->getClientId($name) == 0)
@@ -119,7 +128,7 @@ class clientDB
         return array("success"=>false,"message"=>"failed to match password");
     }
 
-    public function addNewClient($name,$password)
+    public function addNewClient($name,$password,$secret) // must add the $secret parameter to add my secret
     {
 	if ($this->getClientId($name) != 0)
         {
@@ -133,7 +142,8 @@ class clientDB
         $now = date("Y-m-d h:i:s",time());
         $name = $this->db->real_escape_string($name);
 	$password = $this->saltPassword($password);
-        $addQuery = "insert into clients (clientName,clientPW, firstLogin, lastLogin) values ('$name','$password','$now','$now');";
+	$secret = $this->saltSecret($secret); // salting the secret
+        $addQuery = "insert into clients (clientName, clientPW, secret, firstLogin, lastLogin) values ('$name','$password','$secret','$now','$now');"; //Must add the secret here too
         $results = $this->db->query($addQuery);
         $quer1 = "insert into userprofiles (clientName) values ('$name');";
 	$resultado = $this->db->query($quer1);
@@ -143,6 +153,31 @@ class clientDB
 	}
 	return array("success"=>true);
     }
+    // function to reset password must test it
+    public function resetPassword($username,$recovery,$newpass)
+    {
+	$query = "select * from clients where clientName = '$username' and secret = '$recovery'";
+	$results = $this->db->query($query);
+	
+	if (!$results)
+	{  
+	  return "Sorry there was an error";
+	}
+	$np = $this->saltPassword($newpass); // salting the secret
+	$query2 = "Update clients set clientPW = '$np' where clientName = '$username'";
+	$res2 = $this->db->query($query2);
+	
+	if (!$res2) {
+	    return " Sorry there was an error changing your password";
+	}
+	if ($res2) {
+	    return "Be easy we successfully reset your password";
+	}
+     
+    
+    
+    }
+    
     //add a team below
     public function addTeam($team1,$username)
     {
@@ -156,7 +191,7 @@ class clientDB
 	$query1 = "Update userprofiles set team = '$team1' where clientName = '$username'";
 	$res = $this->db->query($query1);
       if (!$res){
-	  return "error";
+	  return " Sorry there was an error adding your team";
       }
       if ($res){
 	return "We have added your team successfully";

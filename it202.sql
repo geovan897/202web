@@ -4,6 +4,7 @@ create table clients
     clientId INT(11) auto_increment primary key,
     clientName varchar(32)not null,
     clientPW   varchar(64)not null,
+    secret     varchar(64)not null,
     activeSession varchar(128)not null,
     firstLogin datetime,
     lastLogin  datetime
