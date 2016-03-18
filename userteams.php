@@ -1,9 +1,6 @@
 <?php
 session_start(); //oirginal portion before changes
 
-//echo ' Welcome '.$_SESSION['username']; // this is the original portion before changes </p>";
-//$user = $_SESSION['username'];
-
 if ( isset( $_POST['team1'] ) &&  isset($_SESSION['username'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
@@ -24,14 +21,32 @@ if ( isset( $_SESSION['username'] ) ){
   $login = new clientDB("connect.ini");
 }
  
- ?>
- <html>
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title> Add your Team and League </title>
+<style>
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #4682B4;
+    padding: 10px;
+}
+.left {
+    position: absolute;
+    left: 0px;
+    width: 300px;
+    border: 3px solid #708090;
+    padding:10px
+  }
+</style>
+</head>
+<h1>Add your Favorite Team and League here </h1>
+<body>
  
-<h1> Add your Favorite Team and League here </h1>
- <body>
- 
- 
- 
+<div class="right">
  <form action="" method="post">
   <select name='team1' >
   <option value = "Ajax">Ajax Fc</option>
@@ -50,8 +65,18 @@ if ( isset( $_SESSION['username'] ) ){
   <option value = "Porto">Manchester United</option>
   <option value = "Real Madrid">Real Madrid</option>
   </select>
-  <input type="submit"  value ="submit" name="submit"/>
+  <input type="submit"  value ="submitmyTeam" name="submitmyTeam"/>
   
+<p>  
+<?php 
+if ( isset( $_POST['submitmyTeam'] ) ){
+echo $response;
+  }
+?>
+</p>
+</div>   
+  
+<div class="left">
   <select name='league' >
   <option value = "La Liga">La Liga</option>
   <option value = "Bundesliga">Bundesliga</option>
@@ -62,13 +87,19 @@ if ( isset( $_SESSION['username'] ) ){
   <option value = "Eredevisie">Netherlands Eredevisie</option>
   
   </select>
-  <input type="submit"  value ="submit" name="submit"/>
+  <input type="submit"  value ="submitmyLeague" name="submitmyLeague"/>
   
-  
+<p>
+<?php
+if (isset($_POST['submitmyLeague'])){
+echo $response2;
+}
+?>
+</p>
+</div>
 
 </form>    
 
-<h2> <?php echo $response; ?> </h2>
-<h3> <?php echo $response2; ?> </h3>
+
 </body>
 </html>
