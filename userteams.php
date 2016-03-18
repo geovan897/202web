@@ -1,13 +1,13 @@
 <?php
 session_start(); //oirginal portion before changes
 
-if ( isset( $_POST['team1'] ) &&  isset($_SESSION['username'])){
+if ( isset( $_POST['team1'] ) &&  isset($_SESSION['username']) &&  isset($_POST['submitmyTeam'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
   $response = $login->addteam($_POST['team1'],$_SESSION['username']);
 }
 ///-------------------------------------------------------------///
-if ( isset( $_POST['league'] ) &&  isset($_SESSION['username'])){
+if ( isset( $_POST['league'] ) &&  isset($_SESSION['username']) && isset($_POST['submitmyLeague'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
   $response2 = $login->addLeague($_POST['league'],$_SESSION['username']);
@@ -27,7 +27,8 @@ if ( isset( $_SESSION['username'] ) ){
 <head>
 <title>  </title>
 <style>
-body { backgound-image: url("Champions.png")}
+
+    
 .right {
     position: absolute;
     right: 0px;
@@ -44,7 +45,7 @@ body { backgound-image: url("Champions.png")}
   }
 </style>
 </head>
-<h1>Add your Favorite Team and League here </h1>
+<h1>Manage or view teams </h1>
 <body> 
  
 <div class="right">

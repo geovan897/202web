@@ -143,6 +143,7 @@ class clientDB
 	}
 	return array("success"=>true);
     }
+    //add a team below
     public function addTeam($team1,$username)
     {
       $query = "select * from userprofiles where team = '$team1' and clientName ='$username'";
@@ -175,9 +176,9 @@ class clientDB
      
       
     } 
-    // addTeam is successful now the bottom function will be to add a league
+    // add a league below
    public function addLeague($League1,$username)
-    {
+   {
       $query = "select * from userprofiles where  league= '$League1' and clientName ='$username'";
       
       $result = $this->db->query($query);
@@ -198,9 +199,39 @@ class clientDB
       if ($details){
 	return "We have added your League successfully";
       }
-     
+   }
+   
+   /// view a leagues Info
+   
+   public function LeagueInfo($league)
+   {
+   
+      $query = "select * from LeagueInfo where League = '$league'";
       
-    } 
+      $result = $this->db->query($query);
+      
+        echo " <table border ='1'align='right' bgcolor='red' >
+      <caption>Champtions League Info</caption>
+      <tr>
+      <th>League</th>
+      <th>LeagueRating</th>
+      <th>Country</th>
+      <th>TopTeam</th>
+      </tr>";
+      while ($row = mysqli_fetch_assoc($result)){
+      
+      echo "<tr>";
+      echo "<td>".$row['League']."</td>";
+      echo "<td>".$row['LeagueRating']."</td>";
+      echo "<td>".$row['Country']."</td>";
+      echo "<td>".$row['TopTeam']."</td>";
+      echo "</tr>";
+    }
+    echo "</table>";
+    }
+      
+      
+   
   
   
 }
