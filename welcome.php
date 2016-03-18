@@ -49,10 +49,12 @@ li a:hover {
 <h2><?php echo "Welcome  ".$_SESSION['username'];?></h2>
 
 <ul>
-  <li><a href="userteams.php"> Add Teams </a><li>
-  <li><a href="Champsleague.php">Champions League Info</a></li>
   <li><a href="logout.php">Log Out</a></li>
-  <li><a href="searchforleague.php">SearchLeagues</a></li>
+  <li><a href="Champsleague.php">Champions League Info</a></li>
+  <li><a href="searchforleague.php">Search Leagues</a></li>
+  <li><a href="searchforteams.php">Search Teams</a></li>
+   <li><a href="userteams.php"> Add Teams </a><li>
+  <li><a href="bookmarks.php"> My bookmarked Items</a></li>
 </ul>
 
 </body>

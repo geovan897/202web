@@ -66,7 +66,7 @@ if ( isset( $_SESSION['username'] ) ){
     
 </style>
 </head>
-<h1>Manage or view teams </h1>
+<h1> Pick a team and a league </h1>
 <body> 
  
 <div class="right">

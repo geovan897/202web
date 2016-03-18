@@ -212,8 +212,56 @@ class clientDB
     }
     echo "</table>";
    }
-   
-  
+   // function to view an individual teams info
+    public function searchTeams($team)
+   {
+      echo "this piece of shit received the parameter   ".$team; // this verified I am able to pass the parameter successfully
+      
+      $query = "select * from teams where TeamName = '$team'";
+      $pieceofshit1 = $this->db->query($query);
+      echo " <table border ='1'align='right' bgcolor='gray' '>
+      <caption>LeagueRatings</caption>
+      <tr>
+      <th>TeamName</th>
+      <th>Country</th>
+      <th>TopScorer</th>
+      <th>NumberofTitles</th>
+      </tr>";
+      while ($row = mysqli_fetch_assoc($pieceofshit1)){
+      
+      echo "<tr>";
+      echo "<td>".$row['TeamName']."</td>";
+      echo "<td>".$row['Country']."</td>";
+      echo "<td>".$row['TopScorer']."</td>";
+      echo "<td>".$row['NumberofTitles']."</td>";
+      echo "</tr>";
+    }
+    echo "</table>";
+   }
+   // to view bookmarked items
+    public function bookMarks($user)
+   {
+      echo "this piece of shit received the parameter   ".$user; // this verified I am able to pass the parameter from my form
+      
+      $query = "select * from userprofiles where clientName = '$user'";
+      $pieceofshit1 = $this->db->query($query);
+      echo " <table border ='1'align='center' bgcolor='gray' '>
+      <caption>BookMarks</caption>
+      <tr>
+      <th>ClientName</th>
+      <th>Team</th>
+      <th>League</th>
+      </tr>";
+      while ($row = mysqli_fetch_assoc($pieceofshit1)){
+      
+      echo "<tr>";
+      echo "<td>".$row['clientName']."</td>";
+      echo "<td>".$row['team']."</td>";
+      echo "<td>".$row['league']."</td>";
+      echo "</tr>";
+    }
+    echo "</table>";
+   }
   
 }
 // at this point db is connected
