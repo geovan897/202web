@@ -25,8 +25,9 @@ if ( isset( $_SESSION['username'] ) ){
 <!DOCTYPE html>
 <html>
 <head>
-<title> Add your Team and League </title>
+<title>  </title>
 <style>
+body { backgound-image: url("Champions.png")}
 .right {
     position: absolute;
     right: 0px;
@@ -44,7 +45,7 @@ if ( isset( $_SESSION['username'] ) ){
 </style>
 </head>
 <h1>Add your Favorite Team and League here </h1>
-<body>
+<body> 
  
 <div class="right">
  <form action="" method="post">
