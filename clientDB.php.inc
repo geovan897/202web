@@ -149,22 +149,10 @@ class clientDB
       $query = "select * from userprofiles where team = '$team1' and clientName ='$username'";
       
       $result = $this->db->query($query);
-      //$search2 = "select * from $user where team2 = $team";
-      //$search3= "select * from $user where team3 = $team";
-     
-      //$results = $this->db->query($query);
       
-
-      //$results2 = $this->db->query($search2);
-      //$results3 = $this->db->query($search3);
       if (!$result){
-	 return "error";
+	 return " Sorry we had an error";
       }
-      /*
-      if ($result->num_rows > 0){
-	return "Failed -  Exists";
-      }else{
-      */
 	$query1 = "Update userprofiles set team = '$team1' where clientName = '$username'";
 	$res = $this->db->query($query1);
       if (!$res){
@@ -184,13 +172,9 @@ class clientDB
       $result = $this->db->query($query);
       
       if (!$result){
-	 return "error";
+	 return "sorry there was an error";
       }
-      /*
-      if ($result->num_rows > 0){
-	return "Failed -  Exists";
-      }else{
-      */
+     
 	$query1 = "Update userprofiles set league = '$League1' where clientName = '$username'";
 	$details = $this->db->query($query1);
       if (!$details){
@@ -203,22 +187,21 @@ class clientDB
    
    /// view a leagues Info
    
-   public function LeagueInfo($league)
+   public function searchLeague($League)
    {
-   
-      $query = "select * from LeagueInfo where League = '$league'";
+      echo "this piece of shit received the parameter   ".$League; // this verified I am able to pass the parameter successfully
       
-      $result = $this->db->query($query);
-      
-        echo " <table border ='1'align='right' bgcolor='red' >
-      <caption>Champtions League Info</caption>
+      $query = "select * from LeagueInfo where League = '$League'";
+      $pieceofshit = $this->db->query($query);
+      echo " <table border ='1'align='right' bgcolor='gray' '>
+      <caption>LeagueRatings</caption>
       <tr>
       <th>League</th>
       <th>LeagueRating</th>
       <th>Country</th>
       <th>TopTeam</th>
       </tr>";
-      while ($row = mysqli_fetch_assoc($result)){
+      while ($row = mysqli_fetch_assoc($pieceofshit)){
       
       echo "<tr>";
       echo "<td>".$row['League']."</td>";
@@ -228,9 +211,7 @@ class clientDB
       echo "</tr>";
     }
     echo "</table>";
-    }
-      
-      
+   }
    
   
   

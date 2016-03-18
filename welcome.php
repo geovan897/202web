@@ -14,13 +14,7 @@ session_start(); //oirginal portion before changes
   
   require_once('clientDB.php.inc');
   $login = new clientDB("connect.ini");
-  //$response = $login->teams(); this portion and the code below works fine but we need to make a nav bar for the list of teams in a league
- //$response2 = $login->leagues();
-
- }
- //echo '<a href ="logout.php" target ="_blank"/><b> Logout</b></a>';
-
- 
+ } 
  /// below the php is prototype material
 ?>
 
@@ -55,9 +49,10 @@ li a:hover {
 <h2><?php echo "Welcome  ".$_SESSION['username'];?></h2>
 
 <ul>
-  <li><a href="userteams.php"> My Teams </a><li>
+  <li><a href="userteams.php"> Add Teams </a><li>
   <li><a href="Champsleague.php">Champions League Info</a></li>
   <li><a href="logout.php">Log Out</a></li>
+  <li><a href="searchforleague.php">SearchLeagues</a></li>
 </ul>
 
 </body>

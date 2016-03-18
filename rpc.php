@@ -4,7 +4,7 @@ require_once("clientDB.php.inc");
 
 $request = $_POST['request'];
 $response = "FUCK<p>";
-$adder = "";
+
 switch($request)
 {
     case "login":

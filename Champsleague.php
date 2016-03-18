@@ -1,16 +1,8 @@
 <?php
-session_start(); //oirginal portion before changes
+session_start(); 
 
-
-
-//echo ' Hi here are your Champions League Teams Info '.$_SESSION['username']; // this is the original portion before changes </p>";
-
-//$user = $_SESSION['username'];
-
-
-
- if ( isset( $_SESSION['username'] ) ){
-  //$x =  "<p class='welcome'>Welcome, <a class='removealine' href='logout.php' title=''>".$_SESSION['username']."</a></p>";
+if ( isset( $_SESSION['username'] ) ){
+  
   
   require_once('clientDB.php.inc');
   $login = new clientDB("connect.ini");

@@ -1,21 +1,24 @@
 <?php
-session_start(); //oirginal portion before changes
+session_start(); 
 
 if ( isset( $_POST['team1'] ) &&  isset($_SESSION['username']) &&  isset($_POST['submitmyTeam'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
-  $response = $login->addteam($_POST['team1'],$_SESSION['username']);
+   $team = $_POST['team1']; // trying to clean my session variables;
+   $user1 = $_SESSION['username']; // doing the same as the line above
+  $response = $login->addteam($team,$user1);
 }
 ///-------------------------------------------------------------///
 if ( isset( $_POST['league'] ) &&  isset($_SESSION['username']) && isset($_POST['submitmyLeague'])){
    require_once('clientDB.php.inc');
    $login = new clientDB ("connect.ini");
-  $response2 = $login->addLeague($_POST['league'],$_SESSION['username']);
+   $league = $_POST['league'];
+   $user2 = $_SESSION['username'];
+  $response2 = $login->addLeague($league,$user2);
 }
 //----------------------------------------------------------------////
-
 if ( isset( $_SESSION['username'] ) ){
-  $x =  "<p class='welcome'>Welcome, <a class='removealine' href='logout.php' title=''>".$_SESSION['username']."</a></p>";
+  
   
   require_once('clientDB.php.inc');
   $login = new clientDB("connect.ini");
@@ -41,8 +44,26 @@ if ( isset( $_SESSION['username'] ) ){
     left: 0px;
     width: 300px;
     border: 3px solid #708090;
-    padding:10px
+    padding:10px;
   }
+.bottomright {
+    position:absolute;
+    bottom:200px;
+    right:0;
+    width: 300px;
+    border: 3px solid #000066;
+    padding:10px;
+}
+.bottomleft {
+    position:absolute;
+    bottom:200;
+    left:0;
+    width: 300px;
+    border: 3px solid #280000;
+    padding:10px;
+}
+    
+    
 </style>
 </head>
 <h1>Manage or view teams </h1>
@@ -85,7 +106,7 @@ echo $response;
   <option value = "Premier League">Barclays Premier League</option>
   <option value = "Serie A">Calcio Serie A</option>
   <option value = "Ligue 1">France Ligue 1</option>
-  <option value = "Primeira Liga">Borussia Dortmund</option>
+  <option value = "Primeira Liga">Primeira Liga</option>
   <option value = "Eredevisie">Netherlands Eredevisie</option>
   
   </select>
@@ -99,9 +120,6 @@ echo $response2;
 ?>
 </p>
 </div>
-
 </form>    
-
-
 </body>
 </html>
