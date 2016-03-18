@@ -31,7 +31,7 @@ class clientDB
     public function teams(){
       $query = "select * from teams order by NumberofTitles DESC;";
       $results = $this->db->query($query);
-      echo " <table border ='1'align='right' bgcolor='red' >
+      echo " <table border ='1'align='right' bgcolor='yellow' >
       <caption>Champtions League Info</caption>
       <tr>
       <th>TeamName</th>
@@ -54,7 +54,7 @@ class clientDB
     public function leagues(){
       $query = "select * from LeagueInfo order by LeagueRating DESC;";
       $results = $this->db->query($query);
-      echo " <table border ='1'align='left bottom' bgcolor='gray' '>
+      echo " <table border ='1'align='left bottom' bgcolor='yellow' '>
       <caption>LeagueRatings</caption>
       <tr>
       <th>League</th>
@@ -193,7 +193,7 @@ class clientDB
       
       $query = "select * from LeagueInfo where League = '$League'";
       $pieceofshit = $this->db->query($query);
-      echo " <table border ='1'align='right' bgcolor='gray' '>
+      echo " <table border ='1'align='right' bgcolor='yellow' '>
       <caption>LeagueRatings</caption>
       <tr>
       <th>League</th>
@@ -215,11 +215,10 @@ class clientDB
    // function to view an individual teams info
     public function searchTeams($team)
    {
-      echo "this piece of shit received the parameter   ".$team; // this verified I am able to pass the parameter successfully
-      
+ 
       $query = "select * from teams where TeamName = '$team'";
       $pieceofshit1 = $this->db->query($query);
-      echo " <table border ='1'align='right' bgcolor='gray' '>
+      echo " <table border ='1'align='right' bgcolor='yellow' '>
       <caption>LeagueRatings</caption>
       <tr>
       <th>TeamName</th>
@@ -241,11 +240,10 @@ class clientDB
    // to view bookmarked items
     public function bookMarks($user)
    {
-      echo "this piece of shit received the parameter   ".$user; // this verified I am able to pass the parameter from my form
       
       $query = "select * from userprofiles where clientName = '$user'";
       $pieceofshit1 = $this->db->query($query);
-      echo " <table border ='1'align='center' bgcolor='gray' '>
+      echo " <table border ='1'align='center' bgcolor='yellow' '>
       <caption>BookMarks</caption>
       <tr>
       <th>ClientName</th>

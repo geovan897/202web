@@ -21,6 +21,29 @@ if (isset ($_POST['searchmyleague'])){
 <head>
 <title>  </title>
 <style>
+ul {
+    list-style-type: none;
+    position:absolute;
+    bottom:250px;
+    left:0px;
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #555;
+    color: white;
+ }
 </style>
 </head>
 <h1></h1>
@@ -42,6 +65,15 @@ if (isset ($_POST['searchmyleague'])){
 <p>
 </p>
 </div>
-</form>    
+</form>
+<ul>
+  <li><a href="logout.php">Log Out</a></li>
+  <li><a href="Champsleague.php">Champions League Info</a></li>
+  <li><a href="searchforleague.php">Search Leagues</a></li>
+  <li><a href="searchforteams.php">Search Teams</a></li>
+   <li><a href="userteams.php"> Add Teams </a><li>
+  <li><a href="bookmarks.php"> My bookmarked Items</a></li>
+</ul>
+
 </body>
 </html>

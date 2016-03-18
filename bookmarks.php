@@ -19,9 +19,12 @@ if ( isset( $_SESSION['username'] ) ){
 <head>
 <style>
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+   list-style-type: none;
+    position:absolute;
+    top:0px;
+    left:0px;
+    margin: 0px;
+    padding: 0px;
     width: 200px;
     background-color: #f1f1f1;
 }
