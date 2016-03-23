@@ -5,6 +5,7 @@ create table clients
     clientName varchar(32)not null,
     clientPW   varchar(64)not null,
     secret     varchar(64)not null,
+    permissions INT(1) not null,
     activeSession varchar(128)not null,
     firstLogin datetime,
     lastLogin  datetime

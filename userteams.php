@@ -34,8 +34,8 @@ if ( isset( $_SESSION['username'] ) ){
 ul {
     list-style-type: none;
     position:absolute;
-    bottom:300px;
-    left:0px;
+    bottom:200px;
+    right:0px;
     margin: 0px;
     padding: 0px;
     width: 200px;

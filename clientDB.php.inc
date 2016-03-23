@@ -120,12 +120,19 @@ class clientDB
 	}
         $client = $results->fetch_assoc();
         {
-	    if ($client['clientPW'] == $this->saltPassword($password))
+	    if ($client['clientPW'] == $this->saltPassword($password) && $client['permissions'] == '1')
 	    {
 		return array("success"=>true);
-	    }
-        }
-        return array("success"=>false,"message"=>"failed to match password");
+	    } else {
+		return array ("success"=>false,"message"=>"your account needs to be authorized");
+	    } // this where i started fucking around 
+           
+           if ($client['clientPW'] !== $this->saltPassword($password) && $client['permissions'] == '1')
+	   {
+		return array("success"=>false,"message"=>"failed to match password");
+		
+	   }
+	}
     }
 
     public function addNewClient($name,$password,$secret) // must add the $secret parameter to add my secret
@@ -143,7 +150,7 @@ class clientDB
         $name = $this->db->real_escape_string($name);
 	$password = $this->saltPassword($password);
 	$secret = $this->saltSecret($secret); // salting the secret
-        $addQuery = "insert into clients (clientName, clientPW, secret, firstLogin, lastLogin) values ('$name','$password','$secret','$now','$now');"; //Must add the secret here too
+        $addQuery = "insert into clients (clientName, clientPW, secret,permissions, firstLogin, lastLogin) values ('$name','$password','$secret','1','$now','$now');"; //Must add the secret here too
         $results = $this->db->query($addQuery);
         $quer1 = "insert into userprofiles (clientName) values ('$name');";
 	$resultado = $this->db->query($quer1);
@@ -224,7 +231,7 @@ class clientDB
    
    public function searchLeague($League)
    {
-      echo "this piece of shit received the parameter   ".$League; // this verified I am able to pass the parameter successfully
+      //echo "this piece of shit received the parameter   ".$League; // this verified I am able to pass the parameter successfully
       
       $query = "select * from LeagueInfo where League = '$League'";
       $pieceofshit = $this->db->query($query);
@@ -254,7 +261,7 @@ class clientDB
       $query = "select * from teams where TeamName = '$team'";
       $pieceofshit1 = $this->db->query($query);
       echo " <table border ='1'align='right' bgcolor='yellow' '>
-      <caption>LeagueRatings</caption>
+      <caption>Teams</caption>
       <tr>
       <th>TeamName</th>
       <th>Country</th>
