@@ -120,14 +120,14 @@ class clientDB
 	}
         $client = $results->fetch_assoc();
         {
-	    if ($client['clientPW'] == $this->saltPassword($password) && $client['permissions'] == '1')
+	    if (($client['clientPW'] == $this->saltPassword($password)) && $client['permissions'] == '1')
 	    {
 		return array("success"=>true);
 	    } else {
 		return array ("success"=>false,"message"=>"your account needs to be authorized");
 	    } // this where i started fucking around 
            
-           if ($client['clientPW'] !== $this->saltPassword($password) && $client['permissions'] == '1')
+           if (($client['clientPW'] !== $this->saltPassword($password)) && $client['permissions'] == '1')
 	   {
 		return array("success"=>false,"message"=>"failed to match password");
 		
